@@ -1,0 +1,33 @@
+{
+    "name": "asma-genql-proxy",
+    "version": "1.0.4",
+    "description": "autogen types for proxy gql",
+    "main": "lib/index.js",
+    "type": "module",
+    "types": "lib",
+    "author": "ie",
+    "license": "ISC",
+    "scripts": {
+      "genql": "genql --endpoint http://localhost:7003/v1/graphql --esm --output ./src/generated -H \"x-hasura-admin-secret: srvproxy\"",
+      "build": "tsc && tsc -p .",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://avanssoma@dev.azure.com/avanssoma/Arbeidoginkludering/_git/asma-genql-proxy"
+    },
+    "keywords": [
+      "gql",
+      "autogen",
+      "gql-client"
+    ],
+    "devDependencies": {
+      "@genql/cli": "^2.6.0",
+      "typescript": "^4.4.4"
+    },
+    "dependencies": {
+      "@genql/runtime": "^2.6.0",
+      "graphql": "^15.5.1"
+    }
+  }
+  
