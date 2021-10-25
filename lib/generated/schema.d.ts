@@ -34,6 +34,7 @@ export interface accessible_aggregate_fields {
 }
 /** unique or primary key constraints on table "accessible" */
 export declare type accessible_constraint = 'accessible_pkey';
+export declare type accessible_enum = 'CUSTOMER' | 'PATIENT';
 /** aggregate max on columns */
 export interface accessible_max_fields {
     comment?: Scalars['String'];
@@ -857,6 +858,7 @@ export interface categories_aggregate_fields {
 }
 /** unique or primary key constraints on table "categories" */
 export declare type categories_constraint = 'categories_pkey';
+export declare type categories_enum = 'INFO' | 'REJECT';
 /** aggregate max on columns */
 export interface categories_max_fields {
     comment?: Scalars['String'];
@@ -1091,13 +1093,13 @@ export interface consent_templates {
     /** (DC2Type:guid) */
     customer_id: Scalars['String'];
     description: Scalars['String'];
-    group?: Scalars['String'];
+    group?: groups_enum;
     /** An object relationship */
     groupByGroup?: groups;
     id: Scalars['bigint'];
     region: Scalars['String'];
     title: Scalars['String'];
-    type?: Scalars['String'];
+    type?: types_enum;
     /** An object relationship */
     typeByType?: types;
     updated_at?: Scalars['timestamptz'];
@@ -1139,11 +1141,9 @@ export interface consent_templates_max_fields {
     /** (DC2Type:guid) */
     customer_id?: Scalars['String'];
     description?: Scalars['String'];
-    group?: Scalars['String'];
     id?: Scalars['bigint'];
     region?: Scalars['String'];
     title?: Scalars['String'];
-    type?: Scalars['String'];
     updated_at?: Scalars['timestamptz'];
     valid_days?: Scalars['bigint'];
     __typename: 'consent_templates_max_fields';
@@ -1154,11 +1154,9 @@ export interface consent_templates_min_fields {
     /** (DC2Type:guid) */
     customer_id?: Scalars['String'];
     description?: Scalars['String'];
-    group?: Scalars['String'];
     id?: Scalars['bigint'];
     region?: Scalars['String'];
     title?: Scalars['String'];
-    type?: Scalars['String'];
     updated_at?: Scalars['timestamptz'];
     valid_days?: Scalars['bigint'];
     __typename: 'consent_templates_min_fields';
@@ -1228,7 +1226,7 @@ export interface consents {
     /** (DC2Type:guid) */
     customer_id: Scalars['String'];
     description: Scalars['String'];
-    group?: Scalars['String'];
+    group?: groups_enum;
     /** An object relationship */
     groupByGroup?: groups;
     id: Scalars['bigint'];
@@ -1237,7 +1235,7 @@ export interface consents {
     query_id?: Scalars['bigint'];
     region: Scalars['String'];
     title: Scalars['String'];
-    type?: Scalars['String'];
+    type?: types_enum;
     /** An object relationship */
     typeByType?: types;
     updated_at?: Scalars['timestamptz'];
@@ -1279,12 +1277,10 @@ export interface consents_max_fields {
     /** (DC2Type:guid) */
     customer_id?: Scalars['String'];
     description?: Scalars['String'];
-    group?: Scalars['String'];
     id?: Scalars['bigint'];
     query_id?: Scalars['bigint'];
     region?: Scalars['String'];
     title?: Scalars['String'];
-    type?: Scalars['String'];
     updated_at?: Scalars['timestamptz'];
     valid_to?: Scalars['date'];
     __typename: 'consents_max_fields';
@@ -1295,12 +1291,10 @@ export interface consents_min_fields {
     /** (DC2Type:guid) */
     customer_id?: Scalars['String'];
     description?: Scalars['String'];
-    group?: Scalars['String'];
     id?: Scalars['bigint'];
     query_id?: Scalars['bigint'];
     region?: Scalars['String'];
     title?: Scalars['String'];
-    type?: Scalars['String'];
     updated_at?: Scalars['timestamptz'];
     valid_to?: Scalars['date'];
     __typename: 'consents_min_fields';
@@ -1384,6 +1378,7 @@ export interface contexts_aggregate_fields {
 }
 /** unique or primary key constraints on table "contexts" */
 export declare type contexts_constraint = 'contexts_pkey';
+export declare type contexts_enum = 'ADVOCA' | 'OUTLOOK' | 'PORTAL';
 /** aggregate max on columns */
 export interface contexts_max_fields {
     comment?: Scalars['String'];
@@ -1932,6 +1927,7 @@ export interface groups_aggregate_fields {
 }
 /** unique or primary key constraints on table "groups" */
 export declare type groups_constraint = 'groups_pkey';
+export declare type groups_enum = 'COMMUNICATION' | 'GENERAL' | 'QUERY';
 /** aggregate max on columns */
 export interface groups_max_fields {
     comment?: Scalars['String'];
@@ -1981,6 +1977,7 @@ export interface initiators_aggregate_fields {
 }
 /** unique or primary key constraints on table "initiators" */
 export declare type initiators_constraint = 'initiators_pkey';
+export declare type initiators_enum = 'CUSTOMER' | 'PATIENT';
 /** aggregate max on columns */
 export interface initiators_max_fields {
     comment?: Scalars['String'];
@@ -2574,7 +2571,7 @@ export interface queries {
     deleted_at?: Scalars['timestamptz'];
     hide_for_patient?: Scalars['Boolean'];
     id: Scalars['bigint'];
-    initiator?: Scalars['String'];
+    initiator?: initiators_enum;
     /** An object relationship */
     initiatorByInitiator?: initiators;
     /** (DC2Type:guid) */
@@ -2590,7 +2587,7 @@ export interface queries {
     /** An aggregate relationship */
     sms_aggregate: sms_aggregate;
     soknad_id?: Scalars['String'];
-    status?: Scalars['String'];
+    status?: status_enum;
     /** An object relationship */
     statusByStatus?: status;
     template_id: Scalars['bigint'];
@@ -2637,7 +2634,6 @@ export interface queries_max_fields {
     customer_id?: Scalars['String'];
     deleted_at?: Scalars['timestamptz'];
     id?: Scalars['bigint'];
-    initiator?: Scalars['String'];
     /** (DC2Type:guid) */
     patient_id?: Scalars['String'];
     properties?: Scalars['String'];
@@ -2645,7 +2641,6 @@ export interface queries_max_fields {
     region?: Scalars['String'];
     security_level?: Scalars['smallint'];
     soknad_id?: Scalars['String'];
-    status?: Scalars['String'];
     template_id?: Scalars['bigint'];
     title?: Scalars['String'];
     updated_at?: Scalars['timestamptz'];
@@ -2660,7 +2655,6 @@ export interface queries_min_fields {
     customer_id?: Scalars['String'];
     deleted_at?: Scalars['timestamptz'];
     id?: Scalars['bigint'];
-    initiator?: Scalars['String'];
     /** (DC2Type:guid) */
     patient_id?: Scalars['String'];
     properties?: Scalars['String'];
@@ -2668,7 +2662,6 @@ export interface queries_min_fields {
     region?: Scalars['String'];
     security_level?: Scalars['smallint'];
     soknad_id?: Scalars['String'];
-    status?: Scalars['String'];
     template_id?: Scalars['bigint'];
     title?: Scalars['String'];
     updated_at?: Scalars['timestamptz'];
@@ -3789,7 +3782,7 @@ export interface sms_template_template_variance_fields {
 }
 /** columns and relationships of "sms_templates" */
 export interface sms_templates {
-    category?: Scalars['String'];
+    category?: categories_enum;
     /** An object relationship */
     categoryByCategory?: categories;
     content: Scalars['String'];
@@ -3840,7 +3833,6 @@ export interface sms_templates_avg_fields {
 export declare type sms_templates_constraint = 'idx_51576_primary';
 /** aggregate max on columns */
 export interface sms_templates_max_fields {
-    category?: Scalars['String'];
     content?: Scalars['String'];
     created_at?: Scalars['timestamptz'];
     /** (DC2Type:guid) */
@@ -3853,7 +3845,6 @@ export interface sms_templates_max_fields {
 }
 /** aggregate min on columns */
 export interface sms_templates_min_fields {
-    category?: Scalars['String'];
     content?: Scalars['String'];
     created_at?: Scalars['timestamptz'];
     /** (DC2Type:guid) */
@@ -3959,6 +3950,7 @@ export interface status_aggregate_fields {
 }
 /** unique or primary key constraints on table "status" */
 export declare type status_constraint = 'status_pkey';
+export declare type status_enum = 'AWAITING_REPLY' | 'COMPLETED' | 'EXPIRED' | 'INBOUND' | 'IN_PROGRESS' | 'PROCESSED' | 'REJECTED';
 /** aggregate max on columns */
 export interface status_max_fields {
     comment?: Scalars['String'];
@@ -4188,7 +4180,7 @@ export interface subscription_root {
 }
 /** columns and relationships of "templates" */
 export interface templates {
-    accessible?: Scalars['String'];
+    accessible?: accessible_enum;
     /** An object relationship */
     accessibleByAccessible?: accessible;
     archived: Scalars['Boolean'];
@@ -4197,7 +4189,7 @@ export interface templates {
     consent_template_to_templates: consent_template_to_template[];
     /** An aggregate relationship */
     consent_template_to_templates_aggregate: consent_template_to_template_aggregate;
-    context?: Scalars['String'];
+    context?: contexts_enum;
     /** An object relationship */
     contextByContext?: contexts;
     created_at?: Scalars['timestamptz'];
@@ -4250,9 +4242,7 @@ export interface templates_avg_fields {
 export declare type templates_constraint = 'idx_51590_primary';
 /** aggregate max on columns */
 export interface templates_max_fields {
-    accessible?: Scalars['String'];
     attributes?: Scalars['String'];
-    context?: Scalars['String'];
     created_at?: Scalars['timestamptz'];
     /** (DC2Type:guid) */
     customer_id?: Scalars['String'];
@@ -4267,9 +4257,7 @@ export interface templates_max_fields {
 }
 /** aggregate min on columns */
 export interface templates_min_fields {
-    accessible?: Scalars['String'];
     attributes?: Scalars['String'];
-    context?: Scalars['String'];
     created_at?: Scalars['timestamptz'];
     /** (DC2Type:guid) */
     customer_id?: Scalars['String'];
@@ -4358,6 +4346,7 @@ export interface types_aggregate_fields {
 }
 /** unique or primary key constraints on table "types" */
 export declare type types_constraint = 'types_pkey';
+export declare type types_enum = 'MANDATORY' | 'OPTIONAL';
 /** aggregate max on columns */
 export interface types_max_fields {
     comment?: Scalars['String'];
@@ -4676,6 +4665,14 @@ export interface accessible_bool_exp {
     comment?: (String_comparison_exp | null);
     name?: (String_comparison_exp | null);
     templates?: (templates_bool_exp | null);
+}
+/** Boolean expression to compare columns of type "accessible_enum". All fields are combined with logical 'AND'. */
+export interface accessible_enum_comparison_exp {
+    _eq?: (accessible_enum | null);
+    _in?: (accessible_enum[] | null);
+    _is_null?: (Scalars['Boolean'] | null);
+    _neq?: (accessible_enum | null);
+    _nin?: (accessible_enum[] | null);
 }
 /** input type for inserting data into table "accessible" */
 export interface accessible_insert_input {
@@ -6666,6 +6663,14 @@ export interface categories_bool_exp {
     name?: (String_comparison_exp | null);
     sms_templates?: (sms_templates_bool_exp | null);
 }
+/** Boolean expression to compare columns of type "categories_enum". All fields are combined with logical 'AND'. */
+export interface categories_enum_comparison_exp {
+    _eq?: (categories_enum | null);
+    _in?: (categories_enum[] | null);
+    _is_null?: (Scalars['Boolean'] | null);
+    _neq?: (categories_enum | null);
+    _nin?: (categories_enum[] | null);
+}
 /** input type for inserting data into table "categories" */
 export interface categories_insert_input {
     comment?: (Scalars['String'] | null);
@@ -7275,12 +7280,12 @@ export interface consent_templates_bool_exp {
     created_at?: (timestamptz_comparison_exp | null);
     customer_id?: (String_comparison_exp | null);
     description?: (String_comparison_exp | null);
-    group?: (String_comparison_exp | null);
+    group?: (groups_enum_comparison_exp | null);
     groupByGroup?: (groups_bool_exp | null);
     id?: (bigint_comparison_exp | null);
     region?: (String_comparison_exp | null);
     title?: (String_comparison_exp | null);
-    type?: (String_comparison_exp | null);
+    type?: (types_enum_comparison_exp | null);
     typeByType?: (types_bool_exp | null);
     updated_at?: (timestamptz_comparison_exp | null);
     valid_days?: (bigint_comparison_exp | null);
@@ -7297,12 +7302,12 @@ export interface consent_templates_insert_input {
     /** (DC2Type:guid) */
     customer_id?: (Scalars['String'] | null);
     description?: (Scalars['String'] | null);
-    group?: (Scalars['String'] | null);
+    group?: (groups_enum | null);
     groupByGroup?: (groups_obj_rel_insert_input | null);
     id?: (Scalars['bigint'] | null);
     region?: (Scalars['String'] | null);
     title?: (Scalars['String'] | null);
-    type?: (Scalars['String'] | null);
+    type?: (types_enum | null);
     typeByType?: (types_obj_rel_insert_input | null);
     updated_at?: (Scalars['timestamptz'] | null);
     valid_days?: (Scalars['bigint'] | null);
@@ -7313,11 +7318,9 @@ export interface consent_templates_max_fieldsRequest {
     /** (DC2Type:guid) */
     customer_id?: boolean | number;
     description?: boolean | number;
-    group?: boolean | number;
     id?: boolean | number;
     region?: boolean | number;
     title?: boolean | number;
-    type?: boolean | number;
     updated_at?: boolean | number;
     valid_days?: boolean | number;
     __typename?: boolean | number;
@@ -7329,11 +7332,9 @@ export interface consent_templates_max_order_by {
     /** (DC2Type:guid) */
     customer_id?: (order_by | null);
     description?: (order_by | null);
-    group?: (order_by | null);
     id?: (order_by | null);
     region?: (order_by | null);
     title?: (order_by | null);
-    type?: (order_by | null);
     updated_at?: (order_by | null);
     valid_days?: (order_by | null);
 }
@@ -7343,11 +7344,9 @@ export interface consent_templates_min_fieldsRequest {
     /** (DC2Type:guid) */
     customer_id?: boolean | number;
     description?: boolean | number;
-    group?: boolean | number;
     id?: boolean | number;
     region?: boolean | number;
     title?: boolean | number;
-    type?: boolean | number;
     updated_at?: boolean | number;
     valid_days?: boolean | number;
     __typename?: boolean | number;
@@ -7359,11 +7358,9 @@ export interface consent_templates_min_order_by {
     /** (DC2Type:guid) */
     customer_id?: (order_by | null);
     description?: (order_by | null);
-    group?: (order_by | null);
     id?: (order_by | null);
     region?: (order_by | null);
     title?: (order_by | null);
-    type?: (order_by | null);
     updated_at?: (order_by | null);
     valid_days?: (order_by | null);
 }
@@ -7414,11 +7411,11 @@ export interface consent_templates_set_input {
     /** (DC2Type:guid) */
     customer_id?: (Scalars['String'] | null);
     description?: (Scalars['String'] | null);
-    group?: (Scalars['String'] | null);
+    group?: (groups_enum | null);
     id?: (Scalars['bigint'] | null);
     region?: (Scalars['String'] | null);
     title?: (Scalars['String'] | null);
-    type?: (Scalars['String'] | null);
+    type?: (types_enum | null);
     updated_at?: (Scalars['timestamptz'] | null);
     valid_days?: (Scalars['bigint'] | null);
 }
@@ -7630,14 +7627,14 @@ export interface consents_bool_exp {
     created_at?: (timestamptz_comparison_exp | null);
     customer_id?: (String_comparison_exp | null);
     description?: (String_comparison_exp | null);
-    group?: (String_comparison_exp | null);
+    group?: (groups_enum_comparison_exp | null);
     groupByGroup?: (groups_bool_exp | null);
     id?: (bigint_comparison_exp | null);
     query?: (queries_bool_exp | null);
     query_id?: (bigint_comparison_exp | null);
     region?: (String_comparison_exp | null);
     title?: (String_comparison_exp | null);
-    type?: (String_comparison_exp | null);
+    type?: (types_enum_comparison_exp | null);
     typeByType?: (types_bool_exp | null);
     updated_at?: (timestamptz_comparison_exp | null);
     valid_to?: (date_comparison_exp | null);
@@ -7655,14 +7652,14 @@ export interface consents_insert_input {
     /** (DC2Type:guid) */
     customer_id?: (Scalars['String'] | null);
     description?: (Scalars['String'] | null);
-    group?: (Scalars['String'] | null);
+    group?: (groups_enum | null);
     groupByGroup?: (groups_obj_rel_insert_input | null);
     id?: (Scalars['bigint'] | null);
     query?: (queries_obj_rel_insert_input | null);
     query_id?: (Scalars['bigint'] | null);
     region?: (Scalars['String'] | null);
     title?: (Scalars['String'] | null);
-    type?: (Scalars['String'] | null);
+    type?: (types_enum | null);
     typeByType?: (types_obj_rel_insert_input | null);
     updated_at?: (Scalars['timestamptz'] | null);
     valid_to?: (Scalars['date'] | null);
@@ -7673,12 +7670,10 @@ export interface consents_max_fieldsRequest {
     /** (DC2Type:guid) */
     customer_id?: boolean | number;
     description?: boolean | number;
-    group?: boolean | number;
     id?: boolean | number;
     query_id?: boolean | number;
     region?: boolean | number;
     title?: boolean | number;
-    type?: boolean | number;
     updated_at?: boolean | number;
     valid_to?: boolean | number;
     __typename?: boolean | number;
@@ -7690,12 +7685,10 @@ export interface consents_max_order_by {
     /** (DC2Type:guid) */
     customer_id?: (order_by | null);
     description?: (order_by | null);
-    group?: (order_by | null);
     id?: (order_by | null);
     query_id?: (order_by | null);
     region?: (order_by | null);
     title?: (order_by | null);
-    type?: (order_by | null);
     updated_at?: (order_by | null);
     valid_to?: (order_by | null);
 }
@@ -7705,12 +7698,10 @@ export interface consents_min_fieldsRequest {
     /** (DC2Type:guid) */
     customer_id?: boolean | number;
     description?: boolean | number;
-    group?: boolean | number;
     id?: boolean | number;
     query_id?: boolean | number;
     region?: boolean | number;
     title?: boolean | number;
-    type?: boolean | number;
     updated_at?: boolean | number;
     valid_to?: boolean | number;
     __typename?: boolean | number;
@@ -7722,12 +7713,10 @@ export interface consents_min_order_by {
     /** (DC2Type:guid) */
     customer_id?: (order_by | null);
     description?: (order_by | null);
-    group?: (order_by | null);
     id?: (order_by | null);
     query_id?: (order_by | null);
     region?: (order_by | null);
     title?: (order_by | null);
-    type?: (order_by | null);
     updated_at?: (order_by | null);
     valid_to?: (order_by | null);
 }
@@ -7782,12 +7771,12 @@ export interface consents_set_input {
     /** (DC2Type:guid) */
     customer_id?: (Scalars['String'] | null);
     description?: (Scalars['String'] | null);
-    group?: (Scalars['String'] | null);
+    group?: (groups_enum | null);
     id?: (Scalars['bigint'] | null);
     query_id?: (Scalars['bigint'] | null);
     region?: (Scalars['String'] | null);
     title?: (Scalars['String'] | null);
-    type?: (Scalars['String'] | null);
+    type?: (types_enum | null);
     updated_at?: (Scalars['timestamptz'] | null);
     valid_to?: (Scalars['date'] | null);
 }
@@ -7940,6 +7929,14 @@ export interface contexts_bool_exp {
     comment?: (String_comparison_exp | null);
     name?: (String_comparison_exp | null);
     templates?: (templates_bool_exp | null);
+}
+/** Boolean expression to compare columns of type "contexts_enum". All fields are combined with logical 'AND'. */
+export interface contexts_enum_comparison_exp {
+    _eq?: (contexts_enum | null);
+    _in?: (contexts_enum[] | null);
+    _is_null?: (Scalars['Boolean'] | null);
+    _neq?: (contexts_enum | null);
+    _nin?: (contexts_enum[] | null);
 }
 /** input type for inserting data into table "contexts" */
 export interface contexts_insert_input {
@@ -9181,6 +9178,14 @@ export interface groups_bool_exp {
     consents?: (consents_bool_exp | null);
     name?: (String_comparison_exp | null);
 }
+/** Boolean expression to compare columns of type "groups_enum". All fields are combined with logical 'AND'. */
+export interface groups_enum_comparison_exp {
+    _eq?: (groups_enum | null);
+    _in?: (groups_enum[] | null);
+    _is_null?: (Scalars['Boolean'] | null);
+    _neq?: (groups_enum | null);
+    _nin?: (groups_enum[] | null);
+}
 /** input type for inserting data into table "groups" */
 export interface groups_insert_input {
     comment?: (Scalars['String'] | null);
@@ -9304,6 +9309,14 @@ export interface initiators_bool_exp {
     comment?: (String_comparison_exp | null);
     name?: (String_comparison_exp | null);
     queries?: (queries_bool_exp | null);
+}
+/** Boolean expression to compare columns of type "initiators_enum". All fields are combined with logical 'AND'. */
+export interface initiators_enum_comparison_exp {
+    _eq?: (initiators_enum | null);
+    _in?: (initiators_enum[] | null);
+    _is_null?: (Scalars['Boolean'] | null);
+    _neq?: (initiators_enum | null);
+    _nin?: (initiators_enum[] | null);
 }
 /** input type for inserting data into table "initiators" */
 export interface initiators_insert_input {
@@ -11589,7 +11602,7 @@ export interface queries_bool_exp {
     deleted_at?: (timestamptz_comparison_exp | null);
     hide_for_patient?: (Boolean_comparison_exp | null);
     id?: (bigint_comparison_exp | null);
-    initiator?: (String_comparison_exp | null);
+    initiator?: (initiators_enum_comparison_exp | null);
     initiatorByInitiator?: (initiators_bool_exp | null);
     patient_id?: (String_comparison_exp | null);
     properties?: (String_comparison_exp | null);
@@ -11600,7 +11613,7 @@ export interface queries_bool_exp {
     seen_by_therapist?: (Boolean_comparison_exp | null);
     sms?: (sms_bool_exp | null);
     soknad_id?: (String_comparison_exp | null);
-    status?: (String_comparison_exp | null);
+    status?: (status_enum_comparison_exp | null);
     statusByStatus?: (status_bool_exp | null);
     template_id?: (bigint_comparison_exp | null);
     title?: (String_comparison_exp | null);
@@ -11624,7 +11637,7 @@ export interface queries_insert_input {
     deleted_at?: (Scalars['timestamptz'] | null);
     hide_for_patient?: (Scalars['Boolean'] | null);
     id?: (Scalars['bigint'] | null);
-    initiator?: (Scalars['String'] | null);
+    initiator?: (initiators_enum | null);
     initiatorByInitiator?: (initiators_obj_rel_insert_input | null);
     /** (DC2Type:guid) */
     patient_id?: (Scalars['String'] | null);
@@ -11636,7 +11649,7 @@ export interface queries_insert_input {
     seen_by_therapist?: (Scalars['Boolean'] | null);
     sms?: (sms_arr_rel_insert_input | null);
     soknad_id?: (Scalars['String'] | null);
-    status?: (Scalars['String'] | null);
+    status?: (status_enum | null);
     statusByStatus?: (status_obj_rel_insert_input | null);
     template_id?: (Scalars['bigint'] | null);
     title?: (Scalars['String'] | null);
@@ -11651,7 +11664,6 @@ export interface queries_max_fieldsRequest {
     customer_id?: boolean | number;
     deleted_at?: boolean | number;
     id?: boolean | number;
-    initiator?: boolean | number;
     /** (DC2Type:guid) */
     patient_id?: boolean | number;
     properties?: boolean | number;
@@ -11659,7 +11671,6 @@ export interface queries_max_fieldsRequest {
     region?: boolean | number;
     security_level?: boolean | number;
     soknad_id?: boolean | number;
-    status?: boolean | number;
     template_id?: boolean | number;
     title?: boolean | number;
     updated_at?: boolean | number;
@@ -11675,7 +11686,6 @@ export interface queries_max_order_by {
     customer_id?: (order_by | null);
     deleted_at?: (order_by | null);
     id?: (order_by | null);
-    initiator?: (order_by | null);
     /** (DC2Type:guid) */
     patient_id?: (order_by | null);
     properties?: (order_by | null);
@@ -11683,7 +11693,6 @@ export interface queries_max_order_by {
     region?: (order_by | null);
     security_level?: (order_by | null);
     soknad_id?: (order_by | null);
-    status?: (order_by | null);
     template_id?: (order_by | null);
     title?: (order_by | null);
     updated_at?: (order_by | null);
@@ -11697,7 +11706,6 @@ export interface queries_min_fieldsRequest {
     customer_id?: boolean | number;
     deleted_at?: boolean | number;
     id?: boolean | number;
-    initiator?: boolean | number;
     /** (DC2Type:guid) */
     patient_id?: boolean | number;
     properties?: boolean | number;
@@ -11705,7 +11713,6 @@ export interface queries_min_fieldsRequest {
     region?: boolean | number;
     security_level?: boolean | number;
     soknad_id?: boolean | number;
-    status?: boolean | number;
     template_id?: boolean | number;
     title?: boolean | number;
     updated_at?: boolean | number;
@@ -11721,7 +11728,6 @@ export interface queries_min_order_by {
     customer_id?: (order_by | null);
     deleted_at?: (order_by | null);
     id?: (order_by | null);
-    initiator?: (order_by | null);
     /** (DC2Type:guid) */
     patient_id?: (order_by | null);
     properties?: (order_by | null);
@@ -11729,7 +11735,6 @@ export interface queries_min_order_by {
     region?: (order_by | null);
     security_level?: (order_by | null);
     soknad_id?: (order_by | null);
-    status?: (order_by | null);
     template_id?: (order_by | null);
     title?: (order_by | null);
     updated_at?: (order_by | null);
@@ -11798,7 +11803,7 @@ export interface queries_set_input {
     deleted_at?: (Scalars['timestamptz'] | null);
     hide_for_patient?: (Scalars['Boolean'] | null);
     id?: (Scalars['bigint'] | null);
-    initiator?: (Scalars['String'] | null);
+    initiator?: (initiators_enum | null);
     /** (DC2Type:guid) */
     patient_id?: (Scalars['String'] | null);
     properties?: (Scalars['String'] | null);
@@ -11808,7 +11813,7 @@ export interface queries_set_input {
     security_level?: (Scalars['smallint'] | null);
     seen_by_therapist?: (Scalars['Boolean'] | null);
     soknad_id?: (Scalars['String'] | null);
-    status?: (Scalars['String'] | null);
+    status?: (status_enum | null);
     template_id?: (Scalars['bigint'] | null);
     title?: (Scalars['String'] | null);
     updated_at?: (Scalars['timestamptz'] | null);
@@ -15308,7 +15313,7 @@ export interface sms_templates_bool_exp {
     _and?: (sms_templates_bool_exp[] | null);
     _not?: (sms_templates_bool_exp | null);
     _or?: (sms_templates_bool_exp[] | null);
-    category?: (String_comparison_exp | null);
+    category?: (categories_enum_comparison_exp | null);
     categoryByCategory?: (categories_bool_exp | null);
     content?: (String_comparison_exp | null);
     created_at?: (timestamptz_comparison_exp | null);
@@ -15326,7 +15331,7 @@ export interface sms_templates_inc_input {
 }
 /** input type for inserting data into table "sms_templates" */
 export interface sms_templates_insert_input {
-    category?: (Scalars['String'] | null);
+    category?: (categories_enum | null);
     categoryByCategory?: (categories_obj_rel_insert_input | null);
     content?: (Scalars['String'] | null);
     created_at?: (Scalars['timestamptz'] | null);
@@ -15341,7 +15346,6 @@ export interface sms_templates_insert_input {
 }
 /** aggregate max on columns */
 export interface sms_templates_max_fieldsRequest {
-    category?: boolean | number;
     content?: boolean | number;
     created_at?: boolean | number;
     /** (DC2Type:guid) */
@@ -15355,7 +15359,6 @@ export interface sms_templates_max_fieldsRequest {
 }
 /** order by max() on columns of table "sms_templates" */
 export interface sms_templates_max_order_by {
-    category?: (order_by | null);
     content?: (order_by | null);
     created_at?: (order_by | null);
     /** (DC2Type:guid) */
@@ -15367,7 +15370,6 @@ export interface sms_templates_max_order_by {
 }
 /** aggregate min on columns */
 export interface sms_templates_min_fieldsRequest {
-    category?: boolean | number;
     content?: boolean | number;
     created_at?: boolean | number;
     /** (DC2Type:guid) */
@@ -15381,7 +15383,6 @@ export interface sms_templates_min_fieldsRequest {
 }
 /** order by min() on columns of table "sms_templates" */
 export interface sms_templates_min_order_by {
-    category?: (order_by | null);
     content?: (order_by | null);
     created_at?: (order_by | null);
     /** (DC2Type:guid) */
@@ -15432,7 +15433,7 @@ export interface sms_templates_pk_columns_input {
 }
 /** input type for updating data in table "sms_templates" */
 export interface sms_templates_set_input {
-    category?: (Scalars['String'] | null);
+    category?: (categories_enum | null);
     content?: (Scalars['String'] | null);
     created_at?: (Scalars['timestamptz'] | null);
     /** (DC2Type:guid) */
@@ -15619,6 +15620,14 @@ export interface status_bool_exp {
     comment?: (String_comparison_exp | null);
     name?: (String_comparison_exp | null);
     queries?: (queries_bool_exp | null);
+}
+/** Boolean expression to compare columns of type "status_enum". All fields are combined with logical 'AND'. */
+export interface status_enum_comparison_exp {
+    _eq?: (status_enum | null);
+    _in?: (status_enum[] | null);
+    _is_null?: (Scalars['Boolean'] | null);
+    _neq?: (status_enum | null);
+    _nin?: (status_enum[] | null);
 }
 /** input type for inserting data into table "status" */
 export interface status_insert_input {
@@ -17136,12 +17145,12 @@ export interface templates_bool_exp {
     _and?: (templates_bool_exp[] | null);
     _not?: (templates_bool_exp | null);
     _or?: (templates_bool_exp[] | null);
-    accessible?: (String_comparison_exp | null);
+    accessible?: (accessible_enum_comparison_exp | null);
     accessibleByAccessible?: (accessible_bool_exp | null);
     archived?: (Boolean_comparison_exp | null);
     attributes?: (String_comparison_exp | null);
     consent_template_to_templates?: (consent_template_to_template_bool_exp | null);
-    context?: (String_comparison_exp | null);
+    context?: (contexts_enum_comparison_exp | null);
     contextByContext?: (contexts_bool_exp | null);
     created_at?: (timestamptz_comparison_exp | null);
     customer_id?: (String_comparison_exp | null);
@@ -17161,12 +17170,12 @@ export interface templates_inc_input {
 }
 /** input type for inserting data into table "templates" */
 export interface templates_insert_input {
-    accessible?: (Scalars['String'] | null);
+    accessible?: (accessible_enum | null);
     accessibleByAccessible?: (accessible_obj_rel_insert_input | null);
     archived?: (Scalars['Boolean'] | null);
     attributes?: (Scalars['String'] | null);
     consent_template_to_templates?: (consent_template_to_template_arr_rel_insert_input | null);
-    context?: (Scalars['String'] | null);
+    context?: (contexts_enum | null);
     contextByContext?: (contexts_obj_rel_insert_input | null);
     created_at?: (Scalars['timestamptz'] | null);
     /** (DC2Type:guid) */
@@ -17183,9 +17192,7 @@ export interface templates_insert_input {
 }
 /** aggregate max on columns */
 export interface templates_max_fieldsRequest {
-    accessible?: boolean | number;
     attributes?: boolean | number;
-    context?: boolean | number;
     created_at?: boolean | number;
     /** (DC2Type:guid) */
     customer_id?: boolean | number;
@@ -17201,9 +17208,7 @@ export interface templates_max_fieldsRequest {
 }
 /** order by max() on columns of table "templates" */
 export interface templates_max_order_by {
-    accessible?: (order_by | null);
     attributes?: (order_by | null);
-    context?: (order_by | null);
     created_at?: (order_by | null);
     /** (DC2Type:guid) */
     customer_id?: (order_by | null);
@@ -17217,9 +17222,7 @@ export interface templates_max_order_by {
 }
 /** aggregate min on columns */
 export interface templates_min_fieldsRequest {
-    accessible?: boolean | number;
     attributes?: boolean | number;
-    context?: boolean | number;
     created_at?: boolean | number;
     /** (DC2Type:guid) */
     customer_id?: boolean | number;
@@ -17235,9 +17238,7 @@ export interface templates_min_fieldsRequest {
 }
 /** order by min() on columns of table "templates" */
 export interface templates_min_order_by {
-    accessible?: (order_by | null);
     attributes?: (order_by | null);
-    context?: (order_by | null);
     created_at?: (order_by | null);
     /** (DC2Type:guid) */
     customer_id?: (order_by | null);
@@ -17297,10 +17298,10 @@ export interface templates_pk_columns_input {
 }
 /** input type for updating data in table "templates" */
 export interface templates_set_input {
-    accessible?: (Scalars['String'] | null);
+    accessible?: (accessible_enum | null);
     archived?: (Scalars['Boolean'] | null);
     attributes?: (Scalars['String'] | null);
-    context?: (Scalars['String'] | null);
+    context?: (contexts_enum | null);
     created_at?: (Scalars['timestamptz'] | null);
     /** (DC2Type:guid) */
     customer_id?: (Scalars['String'] | null);
@@ -17492,6 +17493,14 @@ export interface types_bool_exp {
     consent_templates?: (consent_templates_bool_exp | null);
     consents?: (consents_bool_exp | null);
     name?: (String_comparison_exp | null);
+}
+/** Boolean expression to compare columns of type "types_enum". All fields are combined with logical 'AND'. */
+export interface types_enum_comparison_exp {
+    _eq?: (types_enum | null);
+    _in?: (types_enum[] | null);
+    _is_null?: (Scalars['Boolean'] | null);
+    _neq?: (types_enum | null);
+    _nin?: (types_enum[] | null);
 }
 /** input type for inserting data into table "types" */
 export interface types_insert_input {
@@ -23224,7 +23233,7 @@ export interface consent_templatesPromiseChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>;
     });
     group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (groups_enum | undefined)) => Promise<(groups_enum | undefined)>;
     });
     /** An object relationship */
     groupByGroup: (groupsPromiseChain & {
@@ -23240,7 +23249,7 @@ export interface consent_templatesPromiseChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>;
     });
     type: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (types_enum | undefined)) => Promise<(types_enum | undefined)>;
     });
     /** An object relationship */
     typeByType: (typesPromiseChain & {
@@ -23300,7 +23309,7 @@ export interface consent_templatesObservableChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>;
     });
     group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (groups_enum | undefined)) => Observable<(groups_enum | undefined)>;
     });
     /** An object relationship */
     groupByGroup: (groupsObservableChain & {
@@ -23316,7 +23325,7 @@ export interface consent_templatesObservableChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>;
     });
     type: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (types_enum | undefined)) => Observable<(types_enum | undefined)>;
     });
     /** An object relationship */
     typeByType: (typesObservableChain & {
@@ -23459,9 +23468,6 @@ export interface consent_templates_max_fieldsPromiseChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Promise<(Scalars['bigint'] | undefined)>;
     });
@@ -23469,9 +23475,6 @@ export interface consent_templates_max_fieldsPromiseChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -23493,9 +23496,6 @@ export interface consent_templates_max_fieldsObservableChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Observable<(Scalars['bigint'] | undefined)>;
     });
@@ -23503,9 +23503,6 @@ export interface consent_templates_max_fieldsObservableChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -23527,9 +23524,6 @@ export interface consent_templates_min_fieldsPromiseChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Promise<(Scalars['bigint'] | undefined)>;
     });
@@ -23537,9 +23531,6 @@ export interface consent_templates_min_fieldsPromiseChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -23561,9 +23552,6 @@ export interface consent_templates_min_fieldsObservableChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Observable<(Scalars['bigint'] | undefined)>;
     });
@@ -23571,9 +23559,6 @@ export interface consent_templates_min_fieldsObservableChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -23781,7 +23766,7 @@ export interface consentsPromiseChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>;
     });
     group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (groups_enum | undefined)) => Promise<(groups_enum | undefined)>;
     });
     /** An object relationship */
     groupByGroup: (groupsPromiseChain & {
@@ -23804,7 +23789,7 @@ export interface consentsPromiseChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Promise<Scalars['String']>;
     });
     type: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (types_enum | undefined)) => Promise<(types_enum | undefined)>;
     });
     /** An object relationship */
     typeByType: (typesPromiseChain & {
@@ -23867,7 +23852,7 @@ export interface consentsObservableChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>;
     });
     group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (groups_enum | undefined)) => Observable<(groups_enum | undefined)>;
     });
     /** An object relationship */
     groupByGroup: (groupsObservableChain & {
@@ -23890,7 +23875,7 @@ export interface consentsObservableChain {
         get: (request?: boolean | number, defaultValue?: Scalars['String']) => Observable<Scalars['String']>;
     });
     type: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (types_enum | undefined)) => Observable<(types_enum | undefined)>;
     });
     /** An object relationship */
     typeByType: (typesObservableChain & {
@@ -24033,9 +24018,6 @@ export interface consents_max_fieldsPromiseChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Promise<(Scalars['bigint'] | undefined)>;
     });
@@ -24046,9 +24028,6 @@ export interface consents_max_fieldsPromiseChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -24070,9 +24049,6 @@ export interface consents_max_fieldsObservableChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Observable<(Scalars['bigint'] | undefined)>;
     });
@@ -24083,9 +24059,6 @@ export interface consents_max_fieldsObservableChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -24107,9 +24080,6 @@ export interface consents_min_fieldsPromiseChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Promise<(Scalars['bigint'] | undefined)>;
     });
@@ -24120,9 +24090,6 @@ export interface consents_min_fieldsPromiseChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -24144,9 +24111,6 @@ export interface consents_min_fieldsObservableChain {
     description: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
-    group: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Observable<(Scalars['bigint'] | undefined)>;
     });
@@ -24157,9 +24121,6 @@ export interface consents_min_fieldsObservableChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     title: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    type: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     updated_at: ({
@@ -30709,7 +30670,7 @@ export interface queriesPromiseChain {
         get: (request?: boolean | number, defaultValue?: Scalars['bigint']) => Promise<Scalars['bigint']>;
     });
     initiator: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (initiators_enum | undefined)) => Promise<(initiators_enum | undefined)>;
     });
     /** An object relationship */
     initiatorByInitiator: (initiatorsPromiseChain & {
@@ -30775,7 +30736,7 @@ export interface queriesPromiseChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     status: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (status_enum | undefined)) => Promise<(status_enum | undefined)>;
     });
     /** An object relationship */
     statusByStatus: (statusPromiseChain & {
@@ -30853,7 +30814,7 @@ export interface queriesObservableChain {
         get: (request?: boolean | number, defaultValue?: Scalars['bigint']) => Observable<Scalars['bigint']>;
     });
     initiator: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (initiators_enum | undefined)) => Observable<(initiators_enum | undefined)>;
     });
     /** An object relationship */
     initiatorByInitiator: (initiatorsObservableChain & {
@@ -30919,7 +30880,7 @@ export interface queriesObservableChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     status: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (status_enum | undefined)) => Observable<(status_enum | undefined)>;
     });
     /** An object relationship */
     statusByStatus: (statusObservableChain & {
@@ -31080,9 +31041,6 @@ export interface queries_max_fieldsPromiseChain {
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Promise<(Scalars['bigint'] | undefined)>;
     });
-    initiator: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     /** (DC2Type:guid) */
     patient_id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
@@ -31100,9 +31058,6 @@ export interface queries_max_fieldsPromiseChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['smallint'] | undefined)) => Promise<(Scalars['smallint'] | undefined)>;
     });
     soknad_id: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    status: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     template_id: ({
@@ -31136,9 +31091,6 @@ export interface queries_max_fieldsObservableChain {
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Observable<(Scalars['bigint'] | undefined)>;
     });
-    initiator: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     /** (DC2Type:guid) */
     patient_id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
@@ -31156,9 +31108,6 @@ export interface queries_max_fieldsObservableChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['smallint'] | undefined)) => Observable<(Scalars['smallint'] | undefined)>;
     });
     soknad_id: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    status: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     template_id: ({
@@ -31192,9 +31141,6 @@ export interface queries_min_fieldsPromiseChain {
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Promise<(Scalars['bigint'] | undefined)>;
     });
-    initiator: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     /** (DC2Type:guid) */
     patient_id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
@@ -31212,9 +31158,6 @@ export interface queries_min_fieldsPromiseChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['smallint'] | undefined)) => Promise<(Scalars['smallint'] | undefined)>;
     });
     soknad_id: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    status: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     template_id: ({
@@ -31248,9 +31191,6 @@ export interface queries_min_fieldsObservableChain {
     id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['bigint'] | undefined)) => Observable<(Scalars['bigint'] | undefined)>;
     });
-    initiator: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     /** (DC2Type:guid) */
     patient_id: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
@@ -31268,9 +31208,6 @@ export interface queries_min_fieldsObservableChain {
         get: (request?: boolean | number, defaultValue?: (Scalars['smallint'] | undefined)) => Observable<(Scalars['smallint'] | undefined)>;
     });
     soknad_id: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    status: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     template_id: ({
@@ -37682,7 +37619,7 @@ export interface sms_template_template_variance_fieldsObservableChain {
 /** columns and relationships of "sms_templates" */
 export interface sms_templatesPromiseChain {
     category: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (categories_enum | undefined)) => Promise<(categories_enum | undefined)>;
     });
     /** An object relationship */
     categoryByCategory: (categoriesPromiseChain & {
@@ -37782,7 +37719,7 @@ export interface sms_templatesPromiseChain {
 /** columns and relationships of "sms_templates" */
 export interface sms_templatesObservableChain {
     category: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (categories_enum | undefined)) => Observable<(categories_enum | undefined)>;
     });
     /** An object relationship */
     categoryByCategory: (categoriesObservableChain & {
@@ -37993,9 +37930,6 @@ export interface sms_templates_avg_fieldsObservableChain {
 }
 /** aggregate max on columns */
 export interface sms_templates_max_fieldsPromiseChain {
-    category: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     content: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
@@ -38021,9 +37955,6 @@ export interface sms_templates_max_fieldsPromiseChain {
 }
 /** aggregate max on columns */
 export interface sms_templates_max_fieldsObservableChain {
-    category: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     content: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
@@ -38049,9 +37980,6 @@ export interface sms_templates_max_fieldsObservableChain {
 }
 /** aggregate min on columns */
 export interface sms_templates_min_fieldsPromiseChain {
-    category: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     content: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
@@ -38077,9 +38005,6 @@ export interface sms_templates_min_fieldsPromiseChain {
 }
 /** aggregate min on columns */
 export interface sms_templates_min_fieldsObservableChain {
-    category: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     content: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
@@ -41280,7 +41205,7 @@ export interface subscription_rootObservableChain {
 /** columns and relationships of "templates" */
 export interface templatesPromiseChain {
     accessible: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (accessible_enum | undefined)) => Promise<(accessible_enum | undefined)>;
     });
     /** An object relationship */
     accessibleByAccessible: (accessiblePromiseChain & {
@@ -41327,7 +41252,7 @@ export interface templatesPromiseChain {
         get: <R extends consent_template_to_template_aggregateRequest>(request: R, defaultValue?: FieldsSelection<consent_template_to_template_aggregate, R>) => Promise<FieldsSelection<consent_template_to_template_aggregate, R>>;
     });
     context: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (contexts_enum | undefined)) => Promise<(contexts_enum | undefined)>;
     });
     /** An object relationship */
     contextByContext: (contextsPromiseChain & {
@@ -41433,7 +41358,7 @@ export interface templatesPromiseChain {
 /** columns and relationships of "templates" */
 export interface templatesObservableChain {
     accessible: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (accessible_enum | undefined)) => Observable<(accessible_enum | undefined)>;
     });
     /** An object relationship */
     accessibleByAccessible: (accessibleObservableChain & {
@@ -41480,7 +41405,7 @@ export interface templatesObservableChain {
         get: <R extends consent_template_to_template_aggregateRequest>(request: R, defaultValue?: FieldsSelection<consent_template_to_template_aggregate, R>) => Observable<FieldsSelection<consent_template_to_template_aggregate, R>>;
     });
     context: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
+        get: (request?: boolean | number, defaultValue?: (contexts_enum | undefined)) => Observable<(contexts_enum | undefined)>;
     });
     /** An object relationship */
     contextByContext: (contextsObservableChain & {
@@ -41697,13 +41622,7 @@ export interface templates_avg_fieldsObservableChain {
 }
 /** aggregate max on columns */
 export interface templates_max_fieldsPromiseChain {
-    accessible: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     attributes: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    context: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     created_at: ({
@@ -41737,13 +41656,7 @@ export interface templates_max_fieldsPromiseChain {
 }
 /** aggregate max on columns */
 export interface templates_max_fieldsObservableChain {
-    accessible: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     attributes: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    context: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     created_at: ({
@@ -41777,13 +41690,7 @@ export interface templates_max_fieldsObservableChain {
 }
 /** aggregate min on columns */
 export interface templates_min_fieldsPromiseChain {
-    accessible: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
     attributes: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
-    });
-    context: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Promise<(Scalars['String'] | undefined)>;
     });
     created_at: ({
@@ -41817,13 +41724,7 @@ export interface templates_min_fieldsPromiseChain {
 }
 /** aggregate min on columns */
 export interface templates_min_fieldsObservableChain {
-    accessible: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
     attributes: ({
-        get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
-    });
-    context: ({
         get: (request?: boolean | number, defaultValue?: (Scalars['String'] | undefined)) => Observable<(Scalars['String'] | undefined)>;
     });
     created_at: ({

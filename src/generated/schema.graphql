@@ -162,6 +162,25 @@ enum accessible_constraint {
   accessible_pkey
 }
 
+enum accessible_enum {
+  """customer"""
+  CUSTOMER
+
+  """patient"""
+  PATIENT
+}
+
+"""
+Boolean expression to compare columns of type "accessible_enum". All fields are combined with logical 'AND'.
+"""
+input accessible_enum_comparison_exp {
+  _eq: accessible_enum
+  _in: [accessible_enum!]
+  _is_null: Boolean
+  _neq: accessible_enum
+  _nin: [accessible_enum!]
+}
+
 """
 input type for inserting data into table "accessible"
 """
@@ -2937,6 +2956,25 @@ enum categories_constraint {
   categories_pkey
 }
 
+enum categories_enum {
+  """info"""
+  INFO
+
+  """reject"""
+  REJECT
+}
+
+"""
+Boolean expression to compare columns of type "categories_enum". All fields are combined with logical 'AND'.
+"""
+input categories_enum_comparison_exp {
+  _eq: categories_enum
+  _in: [categories_enum!]
+  _is_null: Boolean
+  _neq: categories_enum
+  _nin: [categories_enum!]
+}
+
 """
 input type for inserting data into table "categories"
 """
@@ -3649,14 +3687,14 @@ type consent_templates {
   """(DC2Type:guid)"""
   customer_id: String!
   description: String!
-  group: String
+  group: groups_enum
 
   """An object relationship"""
   groupByGroup: groups
   id: bigint!
   region: String!
   title: String!
-  type: String
+  type: types_enum
 
   """An object relationship"""
   typeByType: types
@@ -3741,12 +3779,12 @@ input consent_templates_bool_exp {
   created_at: timestamptz_comparison_exp
   customer_id: String_comparison_exp
   description: String_comparison_exp
-  group: String_comparison_exp
+  group: groups_enum_comparison_exp
   groupByGroup: groups_bool_exp
   id: bigint_comparison_exp
   region: String_comparison_exp
   title: String_comparison_exp
-  type: String_comparison_exp
+  type: types_enum_comparison_exp
   typeByType: types_bool_exp
   updated_at: timestamptz_comparison_exp
   valid_days: bigint_comparison_exp
@@ -3778,12 +3816,12 @@ input consent_templates_insert_input {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
+  group: groups_enum
   groupByGroup: groups_obj_rel_insert_input
   id: bigint
   region: String
   title: String
-  type: String
+  type: types_enum
   typeByType: types_obj_rel_insert_input
   updated_at: timestamptz
   valid_days: bigint
@@ -3796,11 +3834,9 @@ type consent_templates_max_fields {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
   id: bigint
   region: String
   title: String
-  type: String
   updated_at: timestamptz
   valid_days: bigint
 }
@@ -3814,11 +3850,9 @@ input consent_templates_max_order_by {
   """(DC2Type:guid)"""
   customer_id: order_by
   description: order_by
-  group: order_by
   id: order_by
   region: order_by
   title: order_by
-  type: order_by
   updated_at: order_by
   valid_days: order_by
 }
@@ -3830,11 +3864,9 @@ type consent_templates_min_fields {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
   id: bigint
   region: String
   title: String
-  type: String
   updated_at: timestamptz
   valid_days: bigint
 }
@@ -3848,11 +3880,9 @@ input consent_templates_min_order_by {
   """(DC2Type:guid)"""
   customer_id: order_by
   description: order_by
-  group: order_by
   id: order_by
   region: order_by
   title: order_by
-  type: order_by
   updated_at: order_by
   valid_days: order_by
 }
@@ -3953,11 +3983,11 @@ input consent_templates_set_input {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
+  group: groups_enum
   id: bigint
   region: String
   title: String
-  type: String
+  type: types_enum
   updated_at: timestamptz
   valid_days: bigint
 }
@@ -4141,7 +4171,7 @@ type consents {
   """(DC2Type:guid)"""
   customer_id: String!
   description: String!
-  group: String
+  group: groups_enum
 
   """An object relationship"""
   groupByGroup: groups
@@ -4152,7 +4182,7 @@ type consents {
   query_id: bigint
   region: String!
   title: String!
-  type: String
+  type: types_enum
 
   """An object relationship"""
   typeByType: types
@@ -4238,14 +4268,14 @@ input consents_bool_exp {
   created_at: timestamptz_comparison_exp
   customer_id: String_comparison_exp
   description: String_comparison_exp
-  group: String_comparison_exp
+  group: groups_enum_comparison_exp
   groupByGroup: groups_bool_exp
   id: bigint_comparison_exp
   query: queries_bool_exp
   query_id: bigint_comparison_exp
   region: String_comparison_exp
   title: String_comparison_exp
-  type: String_comparison_exp
+  type: types_enum_comparison_exp
   typeByType: types_bool_exp
   updated_at: timestamptz_comparison_exp
   valid_to: date_comparison_exp
@@ -4278,14 +4308,14 @@ input consents_insert_input {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
+  group: groups_enum
   groupByGroup: groups_obj_rel_insert_input
   id: bigint
   query: queries_obj_rel_insert_input
   query_id: bigint
   region: String
   title: String
-  type: String
+  type: types_enum
   typeByType: types_obj_rel_insert_input
   updated_at: timestamptz
   valid_to: date
@@ -4298,12 +4328,10 @@ type consents_max_fields {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
   id: bigint
   query_id: bigint
   region: String
   title: String
-  type: String
   updated_at: timestamptz
   valid_to: date
 }
@@ -4317,12 +4345,10 @@ input consents_max_order_by {
   """(DC2Type:guid)"""
   customer_id: order_by
   description: order_by
-  group: order_by
   id: order_by
   query_id: order_by
   region: order_by
   title: order_by
-  type: order_by
   updated_at: order_by
   valid_to: order_by
 }
@@ -4334,12 +4360,10 @@ type consents_min_fields {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
   id: bigint
   query_id: bigint
   region: String
   title: String
-  type: String
   updated_at: timestamptz
   valid_to: date
 }
@@ -4353,12 +4377,10 @@ input consents_min_order_by {
   """(DC2Type:guid)"""
   customer_id: order_by
   description: order_by
-  group: order_by
   id: order_by
   query_id: order_by
   region: order_by
   title: order_by
-  type: order_by
   updated_at: order_by
   valid_to: order_by
 }
@@ -4469,12 +4491,12 @@ input consents_set_input {
   """(DC2Type:guid)"""
   customer_id: String
   description: String
-  group: String
+  group: groups_enum
   id: bigint
   query_id: bigint
   region: String
   title: String
-  type: String
+  type: types_enum
   updated_at: timestamptz
   valid_to: date
 }
@@ -4697,6 +4719,28 @@ unique or primary key constraints on table "contexts"
 enum contexts_constraint {
   """unique or primary key constraint"""
   contexts_pkey
+}
+
+enum contexts_enum {
+  """advoca"""
+  ADVOCA
+
+  """outlook"""
+  OUTLOOK
+
+  """portal"""
+  PORTAL
+}
+
+"""
+Boolean expression to compare columns of type "contexts_enum". All fields are combined with logical 'AND'.
+"""
+input contexts_enum_comparison_exp {
+  _eq: contexts_enum
+  _in: [contexts_enum!]
+  _is_null: Boolean
+  _neq: contexts_enum
+  _nin: [contexts_enum!]
 }
 
 """
@@ -6438,6 +6482,28 @@ enum groups_constraint {
   groups_pkey
 }
 
+enum groups_enum {
+  """communication"""
+  COMMUNICATION
+
+  """general"""
+  GENERAL
+
+  """query"""
+  QUERY
+}
+
+"""
+Boolean expression to compare columns of type "groups_enum". All fields are combined with logical 'AND'.
+"""
+input groups_enum_comparison_exp {
+  _eq: groups_enum
+  _in: [groups_enum!]
+  _is_null: Boolean
+  _neq: groups_enum
+  _nin: [groups_enum!]
+}
+
 """
 input type for inserting data into table "groups"
 """
@@ -6612,6 +6678,25 @@ unique or primary key constraints on table "initiators"
 enum initiators_constraint {
   """unique or primary key constraint"""
   initiators_pkey
+}
+
+enum initiators_enum {
+  """customer"""
+  CUSTOMER
+
+  """patient"""
+  PATIENT
+}
+
+"""
+Boolean expression to compare columns of type "initiators_enum". All fields are combined with logical 'AND'.
+"""
+input initiators_enum_comparison_exp {
+  _eq: initiators_enum
+  _in: [initiators_enum!]
+  _is_null: Boolean
+  _neq: initiators_enum
+  _nin: [initiators_enum!]
 }
 
 """
@@ -9137,7 +9222,7 @@ type queries {
   deleted_at: timestamptz
   hide_for_patient: Boolean
   id: bigint!
-  initiator: String
+  initiator: initiators_enum
 
   """An object relationship"""
   initiatorByInitiator: initiators
@@ -9187,7 +9272,7 @@ type queries {
     where: sms_bool_exp
   ): sms_aggregate!
   soknad_id: String
-  status: String
+  status: status_enum
 
   """An object relationship"""
   statusByStatus: status
@@ -9280,7 +9365,7 @@ input queries_bool_exp {
   deleted_at: timestamptz_comparison_exp
   hide_for_patient: Boolean_comparison_exp
   id: bigint_comparison_exp
-  initiator: String_comparison_exp
+  initiator: initiators_enum_comparison_exp
   initiatorByInitiator: initiators_bool_exp
   patient_id: String_comparison_exp
   properties: String_comparison_exp
@@ -9291,7 +9376,7 @@ input queries_bool_exp {
   seen_by_therapist: Boolean_comparison_exp
   sms: sms_bool_exp
   soknad_id: String_comparison_exp
-  status: String_comparison_exp
+  status: status_enum_comparison_exp
   statusByStatus: status_bool_exp
   template_id: bigint_comparison_exp
   title: String_comparison_exp
@@ -9333,7 +9418,7 @@ input queries_insert_input {
   deleted_at: timestamptz
   hide_for_patient: Boolean
   id: bigint
-  initiator: String
+  initiator: initiators_enum
   initiatorByInitiator: initiators_obj_rel_insert_input
 
   """(DC2Type:guid)"""
@@ -9346,7 +9431,7 @@ input queries_insert_input {
   seen_by_therapist: Boolean
   sms: sms_arr_rel_insert_input
   soknad_id: String
-  status: String
+  status: status_enum
   statusByStatus: status_obj_rel_insert_input
   template_id: bigint
   title: String
@@ -9363,7 +9448,6 @@ type queries_max_fields {
   customer_id: String
   deleted_at: timestamptz
   id: bigint
-  initiator: String
 
   """(DC2Type:guid)"""
   patient_id: String
@@ -9372,7 +9456,6 @@ type queries_max_fields {
   region: String
   security_level: smallint
   soknad_id: String
-  status: String
   template_id: bigint
   title: String
   updated_at: timestamptz
@@ -9390,7 +9473,6 @@ input queries_max_order_by {
   customer_id: order_by
   deleted_at: order_by
   id: order_by
-  initiator: order_by
 
   """(DC2Type:guid)"""
   patient_id: order_by
@@ -9399,7 +9481,6 @@ input queries_max_order_by {
   region: order_by
   security_level: order_by
   soknad_id: order_by
-  status: order_by
   template_id: order_by
   title: order_by
   updated_at: order_by
@@ -9415,7 +9496,6 @@ type queries_min_fields {
   customer_id: String
   deleted_at: timestamptz
   id: bigint
-  initiator: String
 
   """(DC2Type:guid)"""
   patient_id: String
@@ -9424,7 +9504,6 @@ type queries_min_fields {
   region: String
   security_level: smallint
   soknad_id: String
-  status: String
   template_id: bigint
   title: String
   updated_at: timestamptz
@@ -9442,7 +9521,6 @@ input queries_min_order_by {
   customer_id: order_by
   deleted_at: order_by
   id: order_by
-  initiator: order_by
 
   """(DC2Type:guid)"""
   patient_id: order_by
@@ -9451,7 +9529,6 @@ input queries_min_order_by {
   region: order_by
   security_level: order_by
   soknad_id: order_by
-  status: order_by
   template_id: order_by
   title: order_by
   updated_at: order_by
@@ -9603,7 +9680,7 @@ input queries_set_input {
   deleted_at: timestamptz
   hide_for_patient: Boolean
   id: bigint
-  initiator: String
+  initiator: initiators_enum
 
   """(DC2Type:guid)"""
   patient_id: String
@@ -9614,7 +9691,7 @@ input queries_set_input {
   security_level: smallint
   seen_by_therapist: Boolean
   soknad_id: String
-  status: String
+  status: status_enum
   template_id: bigint
   title: String
   updated_at: timestamptz
@@ -13991,7 +14068,7 @@ input sms_template_template_variance_order_by {
 columns and relationships of "sms_templates"
 """
 type sms_templates {
-  category: String
+  category: categories_enum
 
   """An object relationship"""
   categoryByCategory: categories
@@ -14149,7 +14226,7 @@ input sms_templates_bool_exp {
   _and: [sms_templates_bool_exp!]
   _not: sms_templates_bool_exp
   _or: [sms_templates_bool_exp!]
-  category: String_comparison_exp
+  category: categories_enum_comparison_exp
   categoryByCategory: categories_bool_exp
   content: String_comparison_exp
   created_at: timestamptz_comparison_exp
@@ -14181,7 +14258,7 @@ input sms_templates_inc_input {
 input type for inserting data into table "sms_templates"
 """
 input sms_templates_insert_input {
-  category: String
+  category: categories_enum
   categoryByCategory: categories_obj_rel_insert_input
   content: String
   created_at: timestamptz
@@ -14198,7 +14275,6 @@ input sms_templates_insert_input {
 
 """aggregate max on columns"""
 type sms_templates_max_fields {
-  category: String
   content: String
   created_at: timestamptz
 
@@ -14214,7 +14290,6 @@ type sms_templates_max_fields {
 order by max() on columns of table "sms_templates"
 """
 input sms_templates_max_order_by {
-  category: order_by
   content: order_by
   created_at: order_by
 
@@ -14228,7 +14303,6 @@ input sms_templates_max_order_by {
 
 """aggregate min on columns"""
 type sms_templates_min_fields {
-  category: String
   content: String
   created_at: timestamptz
 
@@ -14244,7 +14318,6 @@ type sms_templates_min_fields {
 order by min() on columns of table "sms_templates"
 """
 input sms_templates_min_order_by {
-  category: order_by
   content: order_by
   created_at: order_by
 
@@ -14339,7 +14412,7 @@ enum sms_templates_select_column {
 input type for updating data in table "sms_templates"
 """
 input sms_templates_set_input {
-  category: String
+  category: categories_enum
   content: String
   created_at: timestamptz
 
@@ -14638,6 +14711,40 @@ unique or primary key constraints on table "status"
 enum status_constraint {
   """unique or primary key constraint"""
   status_pkey
+}
+
+enum status_enum {
+  """awaiting_reply"""
+  AWAITING_REPLY
+
+  """completed"""
+  COMPLETED
+
+  """expired"""
+  EXPIRED
+
+  """inbound"""
+  INBOUND
+
+  """in_progress"""
+  IN_PROGRESS
+
+  """processed"""
+  PROCESSED
+
+  """rejected"""
+  REJECTED
+}
+
+"""
+Boolean expression to compare columns of type "status_enum". All fields are combined with logical 'AND'.
+"""
+input status_enum_comparison_exp {
+  _eq: status_enum
+  _in: [status_enum!]
+  _is_null: Boolean
+  _neq: status_enum
+  _nin: [status_enum!]
 }
 
 """
@@ -16239,7 +16346,7 @@ type subscription_root {
 columns and relationships of "templates"
 """
 type templates {
-  accessible: String
+  accessible: accessible_enum
 
   """An object relationship"""
   accessibleByAccessible: accessible
@@ -16281,7 +16388,7 @@ type templates {
     """filter the rows returned"""
     where: consent_template_to_template_bool_exp
   ): consent_template_to_template_aggregate!
-  context: String
+  context: contexts_enum
 
   """An object relationship"""
   contextByContext: contexts
@@ -16441,12 +16548,12 @@ input templates_bool_exp {
   _and: [templates_bool_exp!]
   _not: templates_bool_exp
   _or: [templates_bool_exp!]
-  accessible: String_comparison_exp
+  accessible: accessible_enum_comparison_exp
   accessibleByAccessible: accessible_bool_exp
   archived: Boolean_comparison_exp
   attributes: String_comparison_exp
   consent_template_to_templates: consent_template_to_template_bool_exp
-  context: String_comparison_exp
+  context: contexts_enum_comparison_exp
   contextByContext: contexts_bool_exp
   created_at: timestamptz_comparison_exp
   customer_id: String_comparison_exp
@@ -16480,12 +16587,12 @@ input templates_inc_input {
 input type for inserting data into table "templates"
 """
 input templates_insert_input {
-  accessible: String
+  accessible: accessible_enum
   accessibleByAccessible: accessible_obj_rel_insert_input
   archived: Boolean
   attributes: String
   consent_template_to_templates: consent_template_to_template_arr_rel_insert_input
-  context: String
+  context: contexts_enum
   contextByContext: contexts_obj_rel_insert_input
   created_at: timestamptz
 
@@ -16504,9 +16611,7 @@ input templates_insert_input {
 
 """aggregate max on columns"""
 type templates_max_fields {
-  accessible: String
   attributes: String
-  context: String
   created_at: timestamptz
 
   """(DC2Type:guid)"""
@@ -16524,9 +16629,7 @@ type templates_max_fields {
 order by max() on columns of table "templates"
 """
 input templates_max_order_by {
-  accessible: order_by
   attributes: order_by
-  context: order_by
   created_at: order_by
 
   """(DC2Type:guid)"""
@@ -16542,9 +16645,7 @@ input templates_max_order_by {
 
 """aggregate min on columns"""
 type templates_min_fields {
-  accessible: String
   attributes: String
-  context: String
   created_at: timestamptz
 
   """(DC2Type:guid)"""
@@ -16562,9 +16663,7 @@ type templates_min_fields {
 order by min() on columns of table "templates"
 """
 input templates_min_order_by {
-  accessible: order_by
   attributes: order_by
-  context: order_by
   created_at: order_by
 
   """(DC2Type:guid)"""
@@ -16683,10 +16782,10 @@ enum templates_select_column {
 input type for updating data in table "templates"
 """
 input templates_set_input {
-  accessible: String
+  accessible: accessible_enum
   archived: Boolean
   attributes: String
-  context: String
+  context: contexts_enum
   created_at: timestamptz
 
   """(DC2Type:guid)"""
@@ -16961,6 +17060,25 @@ unique or primary key constraints on table "types"
 enum types_constraint {
   """unique or primary key constraint"""
   types_pkey
+}
+
+enum types_enum {
+  """mandatory"""
+  MANDATORY
+
+  """optional"""
+  OPTIONAL
+}
+
+"""
+Boolean expression to compare columns of type "types_enum". All fields are combined with logical 'AND'.
+"""
+input types_enum_comparison_exp {
+  _eq: types_enum
+  _in: [types_enum!]
+  _is_null: Boolean
+  _neq: types_enum
+  _nin: [types_enum!]
 }
 
 """
