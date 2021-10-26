@@ -133,7 +133,7 @@ export interface anonymous_answers_avg_fields {
 
 
 /** unique or primary key constraints on table "anonymous_answers" */
-export type anonymous_answers_constraint = 'idx_51372_primary'
+export type anonymous_answers_constraint = 'idx_52912_primary'
 
 
 /** aggregate max on columns */
@@ -287,7 +287,7 @@ export interface anonymous_invitations_avg_fields {
 
 
 /** unique or primary key constraints on table "anonymous_invitations" */
-export type anonymous_invitations_constraint = 'idx_51382_anonymous_invitations_invitation_code_anonymous_query' | 'idx_51382_primary'
+export type anonymous_invitations_constraint = 'idx_52922_anonymous_invitations_invitation_code_anonymous_query' | 'idx_52922_primary'
 
 
 /** aggregate max on columns */
@@ -449,7 +449,7 @@ export interface anonymous_queries_avg_fields {
 
 
 /** unique or primary key constraints on table "anonymous_queries" */
-export type anonymous_queries_constraint = 'idx_51391_primary'
+export type anonymous_queries_constraint = 'idx_52931_primary'
 
 
 /** aggregate max on columns */
@@ -618,7 +618,7 @@ export interface anonymous_sms_avg_fields {
 
 
 /** unique or primary key constraints on table "anonymous_sms" */
-export type anonymous_sms_constraint = 'idx_51401_primary'
+export type anonymous_sms_constraint = 'idx_52941_primary'
 
 
 /** aggregate max on columns */
@@ -787,7 +787,7 @@ export interface anonymous_template_question_avg_fields {
 
 
 /** unique or primary key constraints on table "anonymous_template_question" */
-export type anonymous_template_question_constraint = 'idx_51419_anon_temp_quest_anon_temp_id_quest_id_unique'
+export type anonymous_template_question_constraint = 'idx_52959_anon_temp_quest_anon_temp_id_quest_id_unique'
 
 
 /** aggregate max on columns */
@@ -955,7 +955,7 @@ export interface anonymous_templates_avg_fields {
 
 
 /** unique or primary key constraints on table "anonymous_templates" */
-export type anonymous_templates_constraint = 'idx_51411_primary'
+export type anonymous_templates_constraint = 'idx_52951_primary'
 
 
 /** aggregate max on columns */
@@ -1299,7 +1299,7 @@ export interface consent_template_to_template_avg_fields {
 
 
 /** unique or primary key constraints on table "consent_template_to_template" */
-export type consent_template_to_template_constraint = 'idx_51452_cons_temp_to_temp_temp_id_cons_temp_id_unique'
+export type consent_template_to_template_constraint = 'idx_52992_cons_temp_to_temp_temp_id_cons_temp_id_unique'
 
 
 /** aggregate max on columns */
@@ -1451,7 +1451,7 @@ export interface consent_templates_avg_fields {
 
 
 /** unique or primary key constraints on table "consent_templates" */
-export type consent_templates_constraint = 'idx_51445_primary'
+export type consent_templates_constraint = 'idx_52985_primary'
 
 
 /** aggregate max on columns */
@@ -1621,7 +1621,7 @@ export interface consents_avg_fields {
 
 
 /** unique or primary key constraints on table "consents" */
-export type consents_constraint = 'idx_51427_primary'
+export type consents_constraint = 'idx_52967_primary'
 
 
 /** aggregate max on columns */
@@ -1843,7 +1843,7 @@ export interface custom_db_nodes_avg_fields {
 
 
 /** unique or primary key constraints on table "custom_db_nodes" */
-export type custom_db_nodes_constraint = 'idx_51457_primary'
+export type custom_db_nodes_constraint = 'idx_52997_primary'
 
 
 /** aggregate max on columns */
@@ -2003,7 +2003,7 @@ export interface document_patient_avg_fields {
 
 
 /** unique or primary key constraints on table "document_patient" */
-export type document_patient_constraint = 'idx_51477_primary'
+export type document_patient_constraint = 'idx_53017_primary'
 
 
 /** aggregate max on columns */
@@ -2320,7 +2320,7 @@ export interface documents_avg_fields {
 
 
 /** unique or primary key constraints on table "documents" */
-export type documents_constraint = 'idx_51466_primary'
+export type documents_constraint = 'idx_53006_primary'
 
 
 /** aggregate max on columns */
@@ -2531,7 +2531,7 @@ export interface initiators_aggregate_fields {
 /** unique or primary key constraints on table "initiators" */
 export type initiators_constraint = 'initiators_pkey'
 
-export type initiators_enum = 'CUSTOMER' | 'PATIENT'
+export type initiators_enum = 'CUSTOMER' | 'PATIENT' | 'SELFCOMPLETABLE'
 
 
 /** aggregate max on columns */
@@ -2611,7 +2611,7 @@ export interface migrations_avg_fields {
 
 
 /** unique or primary key constraints on table "migrations" */
-export type migrations_constraint = 'idx_51501_primary'
+export type migrations_constraint = 'idx_53041_primary'
 
 
 /** aggregate max on columns */
@@ -3133,7 +3133,7 @@ export interface projects_aggregate_fields {
 
 
 /** unique or primary key constraints on table "projects" */
-export type projects_constraint = 'idx_51505_primary' | 'idx_51505_projects_id_unique'
+export type projects_constraint = 'idx_53045_primary' | 'idx_53045_projects_id_unique'
 
 
 /** aggregate max on columns */
@@ -3256,7 +3256,7 @@ export interface queries_avg_fields {
 
 
 /** unique or primary key constraints on table "queries" */
-export type queries_constraint = 'idx_51513_primary' | 'idx_51513_queries_query_uuid_unique'
+export type queries_constraint = 'idx_53053_primary' | 'idx_53053_queries_query_uuid_unique'
 
 
 /** aggregate max on columns */
@@ -3644,7 +3644,7 @@ export interface question_composite_question_avg_fields {
 
 
 /** unique or primary key constraints on table "question_composite_question" */
-export type question_composite_question_constraint = 'idx_51537_quest_comp_quest_parent_child'
+export type question_composite_question_constraint = 'idx_53077_quest_comp_quest_parent_child'
 
 
 /** aggregate max on columns */
@@ -3815,7 +3815,7 @@ export interface question_template_avg_fields {
 
 
 /** unique or primary key constraints on table "question_template" */
-export type question_template_constraint = 'idx_51543_question_template_template_id_question_id_unique'
+export type question_template_constraint = 'idx_53083_question_template_template_id_question_id_unique'
 
 
 /** aggregate max on columns */
@@ -3989,7 +3989,7 @@ export interface questions_avg_fields {
 
 
 /** unique or primary key constraints on table "questions" */
-export type questions_constraint = 'idx_51529_primary' | 'idx_51529_questions_external_key_id_unique' | 'idx_51529_questions_question_uuid_unique'
+export type questions_constraint = 'idx_53069_primary' | 'idx_53069_questions_external_key_id_unique' | 'idx_53069_questions_question_uuid_unique'
 
 
 /** aggregate max on columns */
@@ -4198,7 +4198,7 @@ export interface settings_avg_fields {
 
 
 /** unique or primary key constraints on table "settings" */
-export type settings_constraint = 'idx_51551_primary' | 'idx_51551_settings_key_unique'
+export type settings_constraint = 'idx_53091_primary' | 'idx_53091_settings_key_unique'
 
 
 /** aggregate max on columns */
@@ -4322,7 +4322,7 @@ export interface shortcuts_aggregate_fields {
 
 
 /** unique or primary key constraints on table "shortcuts" */
-export type shortcuts_constraint = 'idx_51558_primary'
+export type shortcuts_constraint = 'idx_53098_primary'
 
 
 /** aggregate max on columns */
@@ -4435,7 +4435,7 @@ export interface sms_avg_fields {
 
 
 /** unique or primary key constraints on table "sms" */
-export type sms_constraint = 'idx_51566_primary'
+export type sms_constraint = 'idx_53106_primary'
 
 
 /** aggregate max on columns */
@@ -4576,7 +4576,7 @@ export interface sms_template_template_avg_fields {
 
 
 /** unique or primary key constraints on table "sms_template_template" */
-export type sms_template_template_constraint = 'idx_51585_primary'
+export type sms_template_template_constraint = 'idx_53125_primary'
 
 
 /** aggregate max on columns */
@@ -4727,7 +4727,7 @@ export interface sms_templates_avg_fields {
 
 
 /** unique or primary key constraints on table "sms_templates" */
-export type sms_templates_constraint = 'idx_51576_primary'
+export type sms_templates_constraint = 'idx_53116_primary'
 
 
 /** aggregate max on columns */
@@ -5198,7 +5198,7 @@ export interface templates_avg_fields {
 
 
 /** unique or primary key constraints on table "templates" */
-export type templates_constraint = 'idx_51590_primary'
+export type templates_constraint = 'idx_53130_primary'
 
 
 /** aggregate max on columns */

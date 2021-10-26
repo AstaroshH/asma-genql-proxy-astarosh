@@ -383,7 +383,7 @@ unique or primary key constraints on table "anonymous_answers"
 """
 enum anonymous_answers_constraint {
   """unique or primary key constraint"""
-  idx_51372_primary
+  idx_52912_primary
 }
 
 """
@@ -789,10 +789,10 @@ unique or primary key constraints on table "anonymous_invitations"
 """
 enum anonymous_invitations_constraint {
   """unique or primary key constraint"""
-  idx_51382_anonymous_invitations_invitation_code_anonymous_query
+  idx_52922_anonymous_invitations_invitation_code_anonymous_query
 
   """unique or primary key constraint"""
-  idx_51382_primary
+  idx_52922_primary
 }
 
 """
@@ -1239,7 +1239,7 @@ unique or primary key constraints on table "anonymous_queries"
 """
 enum anonymous_queries_constraint {
   """unique or primary key constraint"""
-  idx_51391_primary
+  idx_52931_primary
 }
 
 """
@@ -1718,7 +1718,7 @@ unique or primary key constraints on table "anonymous_sms"
 """
 enum anonymous_sms_constraint {
   """unique or primary key constraint"""
-  idx_51401_primary
+  idx_52941_primary
 }
 
 """
@@ -2190,7 +2190,7 @@ unique or primary key constraints on table "anonymous_template_question"
 """
 enum anonymous_template_question_constraint {
   """unique or primary key constraint"""
-  idx_51419_anon_temp_quest_anon_temp_id_quest_id_unique
+  idx_52959_anon_temp_quest_anon_temp_id_quest_id_unique
 }
 
 """
@@ -2622,7 +2622,7 @@ unique or primary key constraints on table "anonymous_templates"
 """
 enum anonymous_templates_constraint {
   """unique or primary key constraint"""
-  idx_51411_primary
+  idx_52951_primary
 }
 
 """
@@ -3436,7 +3436,7 @@ unique or primary key constraints on table "consent_template_to_template"
 """
 enum consent_template_to_template_constraint {
   """unique or primary key constraint"""
-  idx_51452_cons_temp_to_temp_temp_id_cons_temp_id_unique
+  idx_52992_cons_temp_to_temp_temp_id_cons_temp_id_unique
 }
 
 """
@@ -3795,7 +3795,7 @@ unique or primary key constraints on table "consent_templates"
 """
 enum consent_templates_constraint {
   """unique or primary key constraint"""
-  idx_51445_primary
+  idx_52985_primary
 }
 
 """
@@ -4286,7 +4286,7 @@ unique or primary key constraints on table "consents"
 """
 enum consents_constraint {
   """unique or primary key constraint"""
-  idx_51427_primary
+  idx_52967_primary
 }
 
 """
@@ -4895,7 +4895,7 @@ unique or primary key constraints on table "custom_db_nodes"
 """
 enum custom_db_nodes_constraint {
   """unique or primary key constraint"""
-  idx_51457_primary
+  idx_52997_primary
 }
 
 """
@@ -5206,7 +5206,7 @@ unique or primary key constraints on table "document_patient"
 """
 enum document_patient_constraint {
   """unique or primary key constraint"""
-  idx_51477_primary
+  idx_53017_primary
 }
 
 """
@@ -6102,7 +6102,7 @@ unique or primary key constraints on table "documents"
 """
 enum documents_constraint {
   """unique or primary key constraint"""
-  idx_51466_primary
+  idx_53006_primary
 }
 
 """
@@ -6686,6 +6686,9 @@ enum initiators_enum {
 
   """patient"""
   PATIENT
+
+  """SelfCompletable"""
+  SELFCOMPLETABLE
 }
 
 """
@@ -6849,7 +6852,7 @@ unique or primary key constraints on table "migrations"
 """
 enum migrations_constraint {
   """unique or primary key constraint"""
-  idx_51501_primary
+  idx_53041_primary
 }
 
 """
@@ -9002,10 +9005,10 @@ unique or primary key constraints on table "projects"
 """
 enum projects_constraint {
   """unique or primary key constraint"""
-  idx_51505_primary
+  idx_53045_primary
 
   """unique or primary key constraint"""
-  idx_51505_projects_id_unique
+  idx_53045_projects_id_unique
 }
 
 """
@@ -9390,10 +9393,10 @@ unique or primary key constraints on table "queries"
 """
 enum queries_constraint {
   """unique or primary key constraint"""
-  idx_51513_primary
+  idx_53053_primary
 
   """unique or primary key constraint"""
-  idx_51513_queries_query_uuid_unique
+  idx_53053_queries_query_uuid_unique
 }
 
 """
@@ -11495,7 +11498,7 @@ unique or primary key constraints on table "question_composite_question"
 """
 enum question_composite_question_constraint {
   """unique or primary key constraint"""
-  idx_51537_quest_comp_quest_parent_child
+  idx_53077_quest_comp_quest_parent_child
 }
 
 """
@@ -11920,7 +11923,7 @@ unique or primary key constraints on table "question_template"
 """
 enum question_template_constraint {
   """unique or primary key constraint"""
-  idx_51543_question_template_template_id_question_id_unique
+  idx_53083_question_template_template_id_question_id_unique
 }
 
 """
@@ -12420,13 +12423,13 @@ unique or primary key constraints on table "questions"
 """
 enum questions_constraint {
   """unique or primary key constraint"""
-  idx_51529_primary
+  idx_53069_primary
 
   """unique or primary key constraint"""
-  idx_51529_questions_external_key_id_unique
+  idx_53069_questions_external_key_id_unique
 
   """unique or primary key constraint"""
-  idx_51529_questions_question_uuid_unique
+  idx_53069_questions_question_uuid_unique
 }
 
 """
@@ -12877,10 +12880,10 @@ unique or primary key constraints on table "settings"
 """
 enum settings_constraint {
   """unique or primary key constraint"""
-  idx_51551_primary
+  idx_53091_primary
 
   """unique or primary key constraint"""
-  idx_51551_settings_key_unique
+  idx_53091_settings_key_unique
 }
 
 """
@@ -13107,7 +13110,7 @@ unique or primary key constraints on table "shortcuts"
 """
 enum shortcuts_constraint {
   """unique or primary key constraint"""
-  idx_51558_primary
+  idx_53098_primary
 }
 
 """
@@ -13446,7 +13449,7 @@ unique or primary key constraints on table "sms"
 """
 enum sms_constraint {
   """unique or primary key constraint"""
-  idx_51566_primary
+  idx_53106_primary
 }
 
 """
@@ -13853,7 +13856,7 @@ unique or primary key constraints on table "sms_template_template"
 """
 enum sms_template_template_constraint {
   """unique or primary key constraint"""
-  idx_51585_primary
+  idx_53125_primary
 }
 
 """
@@ -14244,7 +14247,7 @@ unique or primary key constraints on table "sms_templates"
 """
 enum sms_templates_constraint {
   """unique or primary key constraint"""
-  idx_51576_primary
+  idx_53116_primary
 }
 
 """
@@ -16573,7 +16576,7 @@ unique or primary key constraints on table "templates"
 """
 enum templates_constraint {
   """unique or primary key constraint"""
-  idx_51590_primary
+  idx_53130_primary
 }
 
 """
